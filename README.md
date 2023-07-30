@@ -16,7 +16,7 @@
 |REDIS_PORT|您的Redis数据库端口|
 |REDIS_PWD|您的Redis数据库密码|
 
-若您的Redis数据库空间极为有限，建议设置<b>Data eviction policy</b>为<b>allkeys-lru</b><br>
+若您的Redis数据库空间极为有限，建议设置<b>Data eviction policy</b>为<b>volatile-lru</b><br>
 ### 特别说明
 项目参考了腾讯文档收集表的一部分CSS样式，问卷原图由朋友友情提供，项目使用MIT许可证。
 
