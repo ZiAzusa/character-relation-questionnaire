@@ -1,0 +1,190 @@
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>亲友双人问卷预览器</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <link rel="stylesheet" type="text/css" href="/assets/form-style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/toast.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/google-font.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            font-family: "Poppins","Helvetica Neue",Helvetica,Arial,PingFangTC-Light,"Microsoft YaHei",微软雅黑,"STHeiti Light",STXihei,"华文细黑",Heiti,黑体,sans-serif;
+        }
+        .form-rich-editor {
+            line-height: initial;
+        }
+        .form-result {
+            display: none;
+        }
+        .question-main-content {
+            overflow-y: auto;
+        }
+        .form-simple input {
+            padding: 0;
+            width: 100%;
+            outline: 0;
+            border: none;
+            background: 0 0;
+            resize: none;
+            -webkit-appearance: none;
+            appearance: none;
+            caret-color: #1e6fff;
+            scrollbar-width: none;
+        }
+        footer {
+            margin-top: 8px;
+            text-align: center;
+            font-size: 12px;
+        }
+        @media only screen and (max-width: 720px) {
+            canvas#result {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-root fill-form-root">
+        <div class="form-root-wrap fill-root-wrap">
+            <div class="form-fill" style="user-select: text;">
+                <div class="form-header form-title">
+                    <div class="form-header-title-content">亲友双人问卷预览器</div>
+                    <div class="form-rich-editor">
+                        <div class="rich-text-element-paragraph"><span>使用本页面查询已生成的问卷</span></div>
+                    </div>
+                </div>
+                <div class="form-header form-result">
+                    <div class="form-header-title-content">这是我的亲友双人问卷<br>请过目！</div>
+                    <div class="form-rich-editor">
+                        <div class="rich-text-element-paragraph"><span id="ttl"></span></div>
+                    </div>
+		    <div class="form-rich-editor">
+                        <div class="rich-text-element-paragraph"><b>您可以 <span title="点我保存" onclick="saveCanvas();" style="color: #1e90ff; cursor: pointer;">点击这里</span> 以保存图片</b></div>
+                    </div>
+                    <canvas id="result" width="616" height="1334"></canvas>
+                </div>
+                <div class="form-body form-fill-body form-leader">
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>问卷ID</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><input type="number" placeholder="请输入" rows="1" spellcheck="false" style="min-height: 20px; max-height: 20px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question-commit" onclick="check();"><button type="button">查询</button></div>
+                </div>
+            </div>
+            <footer>2023: Made with ♡ by ZY.<br>Style reference Tencent Docs.</footer>
+        </div>
+    </div>
+    <script>
+        let id;
+        try {
+            if (Number(parseSearchArgs().id)) {
+                document.querySelector(".form-leader :nth-child(1) .question-content input").value = parseSearchArgs().id;
+                check();
+            }
+        } catch (error) {null};
+        let canvas = document.getElementById("result");
+        let ctx = canvas.getContext("2d");
+        let positions = [[108, 94, 24, 1, 200, 408], [8, 146, 24, 2], [8, 217, 24, 3], [8, 313, 24, 4], [8, 450, 24, 5], [8, 600, 24, 5], [8, 749, 24, 3], [8, 864, 24, 4], [8, 991, 24, 3], [60, 1080, 18, 1, 240], [8, 1124, 24, 3], [8, 1230, 24, 4]];
+        let color = "#000000";
+        let img = new Image();
+        img.src = "/assets/demo.jpg";
+        img.onload = () => ctx.drawImage(img, 0, 0, 616, 1334);
+        async function check() {
+            id = document.querySelector(".form-leader :nth-child(1) .question-content input").value;
+            await fetch(`/handle?method=read&id=${id}`).then(res => {
+                if (res.status != 200 || !res.ok) {
+                    switch (res.status) {
+                        case 429:
+                            createToast("error", `错误码：${res.status}<br>您的请求过于频繁`, true, 2);
+                            break;
+                        case 404:
+                            createToast("error", `错误码：${res.status}<br>指定ID的问卷不存在`, true, 2);
+                            break;
+                        case 403:
+                            createToast("error", `错误码：406<br>这张问卷还未被亲友填写哦`, true, 2);
+                            break;
+                        case 500:
+                            createToast("error", `错误码：${res.status}<br>您的请求方法有误`, true, 2);
+                            break;
+                        default:
+                            createToast("error", `错误码：${res.status}<br>未知错误`, true, 2);
+                            break;
+                    }
+                    throw "Error!";
+                }
+                return res.json();
+            }).then(data => {
+                if (!data.data.data[1]) {
+                    createToast("error", `错误码：406<br>这张问卷还未被亲友填写哦`, true, 2);
+                    return;
+                }
+                drawResult(data.data.data[0], 0, data.data.data[0][data.data.data[0].length - 1])
+                drawResult(data.data.data[1], 1, data.data.data[1][data.data.data[1].length - 1]);
+                document.querySelector("span#ttl").innerHTML = `此链接剩余有效期：${getDuration(Number(data.data.ttl))}<br>如有需要，请尽快保存图片，谢谢。`;
+                document.querySelector(".form-title").style.display = "none";
+                document.querySelector(".form-leader").style.display = "none";
+                document.querySelector(".form-result").style.display = "block";
+            });
+        }
+        function drawResult(result, cnid, color) {
+            result.forEach((value, index) => {
+                if (index == result.length - 1) {
+                    return;
+                }
+                let fontSize = positions[index][2];
+                let maxWidth = positions[index][4] ? positions[index][4] : 300;
+                ctx.font = String(fontSize) + "px Heiti";
+                ctx.fillStyle = color;
+                let texts = checkTextLength(maxWidth, fontSize, value);
+                for (let i = 0; i <= texts.rows && i <= positions[index][3]; i++) {
+                    ctx.fillText(value.slice(texts.rowFontNum*(i-1), texts.rowFontNum*i), (!cnid ? positions[index][0] : (positions[index][5] ? positions[index][5] : 318)), positions[index][1]+(i-0.2)*fontSize, maxWidth);
+                }
+            });
+        }
+        function checkTextLength(maxWidth, fontSize, string) {
+            let rowFontNum = Math.floor(maxWidth / fontSize);
+            let strLength = string.length;
+            let rows = Math.ceil(strLength / rowFontNum);
+            return{maxWidth, fontSize, rowFontNum, strLength, rows};
+        }
+        function parseSearchArgs() {
+            let url = location.search;
+            let rst = {};
+            if (url.indexOf("?") != -1) {
+                let str = url.substring(1);
+                let parts = str.split("&");
+                for(let i=0; i<parts.length; i++) rst[parts[i].split("=")[0]] = decodeURI(parts[i].split("=")[1]);
+            }
+            return rst;
+        }
+        function getDuration(second) {
+	       let duration;
+	       let days = Math.floor(second / 86400);
+	       let hours = Math.floor((second % 86400) / 3600);
+	       let minutes = Math.floor(((second % 86400) % 3600) / 60);
+	       let seconds = Math.floor(((second % 86400) % 3600) % 60);
+	       if (days > 0)  duration = days + "天" + hours + "小时" + minutes + "分" + seconds + "秒";
+	       else if (hours > 0)  duration = hours + "小时" + minutes + "分" + seconds + "秒";
+	       else if (minutes > 0) duration = minutes + "分" + seconds + "秒";
+	       else if (seconds > 0) duration = seconds + "秒";
+	       return duration;
+        }
+        function saveCanvas() {
+            download(canvas.toDataURL());
+        }
+    </script>
+    <script defer src="/assets/toast.min.js"></script>
+    <script src="/assets/download.min.js"></script>
+</body>
+</html>

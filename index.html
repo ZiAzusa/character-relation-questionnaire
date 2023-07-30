@@ -1,0 +1,87 @@
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>亲友双人问卷生成器</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <link rel="stylesheet" type="text/css" href="/assets/form-style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/google-font.css">
+    <style>
+        * {
+            font-family: "Poppins","Helvetica Neue",Helvetica,Arial,PingFangTC-Light,"Microsoft YaHei",微软雅黑,"STHeiti Light",STXihei,"华文细黑",Heiti,黑体,sans-serif;
+        }
+        body {
+            background: #e9ebed;
+        }
+        .form-root {
+            height: auto;
+        }
+        .form-root-wrap {
+            border-radius: 8px;
+            padding-bottom: 0;
+        }
+        .form-fill {
+            margin-bottom: .213rem;
+        }
+        .form-header {
+            margin-bottom: 0;
+        }
+        .form-rich-editor {
+            line-height: initial;
+        }
+        .form-fill-body {
+            display: flex;
+            width: 100%;
+        }
+        .question-commit {
+            margin: 16px 2.5% !important;
+            width: 33.33333% !important;
+        }
+        footer {
+            margin-top: 8px;
+            margin-bottom: 8px;
+            text-align: center;
+            font-size: 12px;
+        }
+        @media only screen and (max-width: 450px) {
+            .form-fill-body {
+                display: initial;
+                width: 100%;
+            }
+            .question-commit {
+                margin: 16px auto !important;
+                width: 80% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-root fill-form-root">
+        <div class="form-root-wrap fill-root-wrap">
+            <div class="form-fill" style="user-select: text;">
+                <div class="form-header">
+                    <div class="form-header-title-content">亲友双人问卷生成器</div>
+                    <div class="form-rich-editor">
+                        <div class="rich-text-element-paragraph"><span>预计需要5分钟左右填写哦~</span></div>
+                    </div>
+                    <div class="form-rich-editor">
+                        <div class="rich-text-element-paragraph"><span><b>食用方法</b><br>先自己创建一份，根据问题填写信息和对某位亲友的印象，然后把填写链接分享给Ta即可~<br>这个问卷对方在填写之前看不到你填的东西的，所以可以用来检测下默契度(´ｰ∀ｰ`)</span></div>
+                    </div>
+                    <div class="form-body form-fill-body">
+                        <div class="question-commit">
+                            <button type="button" onclick="window.location.href = '/create';" style="background-color:dodgerblue;">创建</button>
+                        </div>
+                        <div class="question-commit">
+                            <button type="button" onclick="window.location.href = '/write';" style="background-color:yellowgreen;">填写</button>
+                        </div>
+                        <div class="question-commit">
+                            <button type="button" onclick="window.location.href = '/read';" style="background-color:tomato;">查询</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>2023: Made with ♡ by ZY.<br>Style reference Tencent Docs.</footer>
+        </div>
+    </div>
+</body>
+</html>

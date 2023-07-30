@@ -1,0 +1,28 @@
+{
+    "rewrites": [
+        {
+            "source": "/",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/index",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/create",
+            "destination": "/create.html"
+        },
+        {
+            "source": "/write",
+            "destination": "/write.html"
+        },
+        {
+            "source": "/read",
+            "destination": "/read.html"
+        },
+        {
+            "source": "/handle",
+            "destination": "/api/handle.py"
+        }
+    ]
+}

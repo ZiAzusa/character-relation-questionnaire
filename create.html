@@ -1,0 +1,339 @@
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>亲友双人问卷生成器 - 创建</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <link rel="stylesheet" type="text/css" href="/assets/form-style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/toast.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/google-font.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            font-family: "Poppins","Helvetica Neue",Helvetica,Arial,PingFangTC-Light,"Microsoft YaHei",微软雅黑,"STHeiti Light",STXihei,"华文细黑",Heiti,黑体,sans-serif;
+        }
+        .form-rich-editor {
+            line-height: initial;
+        }
+        .form-result {
+            display: none;
+        }
+        .question-main-content {
+            overflow-y: auto;
+        }
+        textarea {
+            min-height: 50px;
+            height: auto;
+        }
+        footer {
+            margin-top: 8px;
+            text-align: center;
+            font-size: 12px;
+        }
+        input[type="color"] {
+            border: none;
+            background: none;
+            height: 24px;
+            width: 42px;
+            padding: 0;
+            vertical-align: middle;
+        }
+        @media only screen and (max-width: 700px) {
+            canvas#result {
+                width: 80%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-root fill-form-root">
+        <div class="form-root-wrap fill-root-wrap">
+            <div class="form-fill" style="user-select: text;">
+                <div class="form-header form-title">
+                    <div class="form-header-title-content">亲友双人问卷生成器</div>
+                    <div class="form-rich-editor">
+                        <div class="rich-text-element-paragraph"><span>预计需要5分钟左右填写哦~</span></div>
+                    </div>
+                </div>
+                <div class="form-header form-result">
+                    <div class="form-header-title-content">完成！</div>
+                    <div class="form-rich-editor">
+                        <div class="rich-text-element-paragraph"><span id="msg"></span></div>
+                    </div>
+                    <div class="form-rich-editor">
+                        <div class="rich-text-element-paragraph"><b>您可以将以上内容 <span title="点我复制" onclick="copyIt();" style="color: #1e90ff; cursor: pointer;">复制</span> 分享给您的亲友，以便对方填写~<br>对方填写完成后，您可以访问以下链接下载图片（有效期7天）</b></div>
+                    </div>
+                    <div class="form-rich-editor">
+                        <div class="rich-text-element-paragraph"><span id="url"></span></div>
+                    </div>
+                </div>
+                <div class="form-body form-fill-body form-main">
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>您的角色名称（C.N.）是？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false" style="min-height: 20px; max-height: 20px;"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>你们怎么加的好友？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>你们如何成为亲友的？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>对Ta的初印象是？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>对Ta的现印象是？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>对方的优缺点是什么？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>对方经常说的话or名言有什么？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>有什么想和对方一起做的事情吗？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>感觉对方像什么样的角色？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>坐标远近？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>相处方式大概是？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question text-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span>填完了！想和对方说点啥？</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question hex-answer">
+                        <div class="question-main-content">
+                            <div class="question-title"><span style="vertical-align: middle;">最后来选个字体颜色吧：</span><input type="color" oninput="document.querySelector('.hex-answer textarea').value = this.value;"></div>
+                            <div class="form-rich-editor"><span style="font-size: smaller;">如果上面的颜色选择器不起作用，您也可以在下面手动输入一个HEX颜色值。</span></div>
+                            <div class="question-content">
+                                <div class="form-simple form-simple-fill">
+                                    <div class="form-simple-main form-ui-component-basic size-small multiple with-border">
+                                        <div class="form-ui-component-basic-text"><textarea inputmode="text" placeholder="请输入" rows="1" spellcheck="false" style="min-height: 20px; max-height: 20px;">#000000</textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question-commit" onclick="submit();"><button type="button">提交</button></div>
+                </div>
+            </div>
+            <footer>2023: Made with ♡ by ZY.<br>Style reference Tencent Docs.</footer>
+        </div>
+    </div>
+    <script>
+        let positions = [[108, 94, 24, 2/3, 200, 408], [8, 146, 24, 2], [8, 217, 24, 3], [8, 313, 24, 4], [8, 450, 24, 5], [8, 600, 24, 5], [8, 749, 24, 3], [8, 864, 24, 4], [8, 991, 24, 3], [60, 1080, 18, 1, 240], [8, 1124, 24, 3], [8, 1230, 24, 4]];
+        let color = "#000000";
+        async function submit() {
+            let result = {"data": []};
+            let error = false;
+            let answers = Array.from(document.querySelector(".form-main").children);
+            answers.forEach((element, index) => {
+                if (element.className == "question text-answer") {
+                    if (element.querySelector("textarea").value) {
+                        result.data.push(element.querySelector("textarea").value);
+                        if (element.querySelector(".question-content-error")) {
+                            element.querySelector(".form-simple-main").classList.remove("error");
+                            element.querySelector(".question-content-error").remove();
+                        }
+                        if (element.querySelector("textarea").value.length > positions[index][3] * 12) {
+                            error = true;
+                            element.querySelector(".form-simple-main").classList.add("error");
+                            let errorDiv = document.createElement("div");
+                            errorDiv.className = "question-content-error";
+                            errorDiv.innerHTML = "超出字数限制！本问题最多填写" + String((positions[index][3] * 12).toFixed(0)) + "字";
+                            element.querySelector(".question-content").appendChild(errorDiv);
+                        }
+                    } else {
+                        error = true;
+                        if (element.querySelector(".question-content-error") == null) {
+                            element.querySelector(".form-simple-main").classList.add("error");
+                            let errorDiv = document.createElement("div");
+                            errorDiv.className = "question-content-error";
+                            errorDiv.innerHTML = "该问题为必填";
+                            element.querySelector(".question-content").appendChild(errorDiv);
+                        }
+                    }
+                } else if (element.className == "question hex-answer") {
+                    let type = "^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$";
+                    let re = new RegExp(type);
+                    if (element.querySelector("textarea").value.match(re) == null) {
+                        error = true;
+                        if (element.querySelector(".question-content-error") == null) {
+                            element.querySelector(".form-simple-main").classList.add("error");
+                            let errorDiv = document.createElement("div");
+                            errorDiv.className = "question-content-error";
+                            errorDiv.innerHTML = "颜色值不合法，默认使用#000000（纯黑）";
+                            element.querySelector(".question-content").appendChild(errorDiv);
+                        }
+                        element.querySelector("textarea").value = "#000000";
+                    } else if (element.querySelector(".question-content-error")) {
+                        element.querySelector(".form-simple-main").classList.remove("error");
+                        element.querySelector(".question-content-error").remove();
+                    }
+                    color = element.querySelector("textarea").value;
+                }
+            });
+            if (error) {
+                createToast("error", `错误码：400<br>您填写的内容存在问题，请检查`, true, 2);
+                return;
+            };
+            if (!confirm("是否继续提交？请注意，提交后将无法修改，请仔细检查所填写信息后再提交！")) {
+                return;
+            }
+            result.data.push(color);
+            resultStr = encodeURIComponent(window.btoa(unescape(encodeURIComponent(JSON.stringify(result)))));
+            await fetch(`/handle?method=save&data=${resultStr}`).then(res => {
+                if (res.status != 200 || !res.ok) {
+                    switch (res.status) {
+                        case 429:
+                            createToast("error", `错误码：${res.status}<br>您的请求过于频繁`, true, 2);
+                            break;
+                        case 404:
+                            createToast("error", `错误码：${res.status}<br>指定ID的问卷不存在`, true, 1.5);
+                            break;
+                        case 403:
+                            createToast("error", `错误码：${res.status}<br>您提交的口令有误`, true, 1.5);
+                            break;
+                        case 500:
+                            createToast("error", `错误码：${res.status}<br>您的请求方法有误`, true, 1.5);
+                            break;
+                        default:
+                            createToast("error", `错误码：${res.status}<br>未知错误`, true, 1.5);
+                            break;
+                    }
+                    throw "Error!";
+                }
+                return res.json();
+            }).then(data => {
+                document.querySelector("span#msg").innerHTML = `(｡･∀･)ﾉﾞ嗨！可以和我一起填一张亲友双人问卷吗~<br>链接：${window.location.protocol+'//'+window.location.host}/write?id=${data.data.id}<br>口令：${data.data.data.w}`;
+                document.querySelector("span#url").innerHTML = `链接：${window.location.protocol+'//'+window.location.host}/read?id=${data.data.id}`;
+                document.querySelector(".form-title").style.display = "none";
+                document.querySelector(".form-main").style.display = "none";
+                document.querySelector(".form-result").style.display = "block";
+            });
+        }
+        function copyIt() {
+            let innerText = event.target.innerText;
+            let tmpInput = document.createElement("textarea");
+            document.body.appendChild(tmpInput);
+            tmpInput.value = document.querySelector("span#msg").innerHTML.replace(/<br>/g, "\r\n");
+            tmpInput.select();
+            document.execCommand("Copy");
+            tmpInput.remove();
+        }
+    </script>
+    <script defer src="/assets/toast.min.js"></script>
+</body>
+</html>
