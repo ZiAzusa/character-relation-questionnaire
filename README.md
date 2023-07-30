@@ -18,8 +18,8 @@
 
 若您的Redis数据库空间极为有限，建议设置<b>Data eviction policy</b>为<b>allkeys-lru</b><br>
 ### 特别说明
-项目参考了腾讯文档收集表的一部分CSS样式，使用MIT许可证。
+项目参考了腾讯文档收集表的一部分CSS样式，问卷原图由朋友友情提供，项目使用MIT许可证。
 
 ---
 
-Made with ♡ by [魂归梓里(ZiAzusa)](https://about.sukimoe.cn/)
+Made with ♡ by [梓漪(ZiAzusa)](https://about.sukimoe.cn/)
