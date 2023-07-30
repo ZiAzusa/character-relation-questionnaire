@@ -3,7 +3,7 @@
 ![maven](https://img.shields.io/badge/JavaScript-yellow)
 ![maven](https://img.shields.io/badge/Redis-red)
 ![maven](https://img.shields.io/badge/Vercel-black)<br>
-一个简单的亲友二人问卷生成器，使用Vercel提供服务，使用Redis数据库<br>
+一个简单的亲友二人问卷生成器，使用HTML5 Canvas绘图，使用Vercel提供服务，使用Redis数据库<br>
 ### 简介
 本项目支持使用Vercel搭建，您可以Fork本仓库后访问 [Vercel](https://vercel.com) 使用GitHub登录并导入您的Fork仓库在根目录创建Project。<br>
 一个简单的 [示例页面](https://cnfq.klee.xin/)<br>
