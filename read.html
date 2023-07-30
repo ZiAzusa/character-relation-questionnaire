@@ -147,7 +147,7 @@
                 ctx.font = String(fontSize) + "px Heiti";
                 ctx.fillStyle = color;
                 let texts = checkTextLength(maxWidth, fontSize, value);
-                for (let i = 0; i <= texts.rows && i <= positions[index][3]; i++) {
+                for (let i = 0; i <= texts.rows && i <= positions[index][3].toFixed(0); i++) {
                     ctx.fillText(value.slice(texts.rowFontNum*(i-1), texts.rowFontNum*i), (!cnid ? positions[index][0] : (positions[index][5] ? positions[index][5] : 318)), positions[index][1]+(i-0.2)*fontSize, maxWidth);
                 }
             });
