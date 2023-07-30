@@ -117,7 +117,10 @@ class handler(BaseHTTPRequestHandler):
                 self.handle_request(500, 'application/json', dumps(opt))
                 return
             if not id:
-                id = int(redisRes.get("c")) + 1
+                counter = redisRes.get("c")
+                if counter == None:
+                    counter = 0
+                id = int(counter) + 1
             value = save_data(id, data, word)
             opt = {'code': 200, 'data': value}
             self.handle_request(200, 'application/json', dumps(opt))
