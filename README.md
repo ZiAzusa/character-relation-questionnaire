@@ -8,7 +8,7 @@
 本项目支持使用Vercel搭建，您可以Fork本仓库后访问 [Vercel](https://vercel.com) 使用GitHub登录并导入您的Fork仓库在根目录创建Project。<br>
 一个简单的 [示例页面](https://cnfq.klee.xin/)<br>
 <br>
-本项目支持速率限制，您可以打开 [api/handle.py](https://github.com/ZiAzusa/character-relation-faq/blob/main/api/handle.py) 进行相关配置<br>
+本项目支持速率限制，您可以打开 [api/handle.py](https://github.com/ZiAzusa/character-relation-questionnaire/blob/main/api/handle.py) 进行相关配置<br>
 注意！本项目需要使用Redis数据库，请在Vercel的环境变量配置以下信息：<br>
 | 键 | 值 |
 | --- | --- |
