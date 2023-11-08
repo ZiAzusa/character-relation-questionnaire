@@ -22,4 +22,4 @@
 
 ---
 
-Made with ♡ by [梓漪(ZiAzusa)](https://about.sukimoe.cn/)
+Made with ♡ by [梓漪(ZiAzusa)](https://intro.lie.moe/)
